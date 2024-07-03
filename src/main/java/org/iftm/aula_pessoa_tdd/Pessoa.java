@@ -12,8 +12,11 @@ public class Pessoa {
     }
 
     public void setNome(String nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setNome'");
+        if (nome.length()>=2 && nome.length()<=100){
+            this.nome = nome.toUpperCase();
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 
     
