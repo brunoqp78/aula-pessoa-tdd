@@ -4,9 +4,13 @@ public class Pessoa {
     private double salario;
 
     public Pessoa(){}
-    
+
     public Pessoa(String nome) {
-        //TODO Auto-generated constructor stub
+        if (nome.length()>=2 && nome.length()<=100){
+            this.nome = nome.toUpperCase();
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 
     public String getNome() {
