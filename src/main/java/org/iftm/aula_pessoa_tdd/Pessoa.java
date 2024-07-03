@@ -3,6 +3,11 @@ public class Pessoa {
     private String nome;
     private double salario;
 
+    public Pessoa(){}
+    
+    public Pessoa(String nome) {
+        //TODO Auto-generated constructor stub
+    }
 
     public String getNome() {
         return nome;
