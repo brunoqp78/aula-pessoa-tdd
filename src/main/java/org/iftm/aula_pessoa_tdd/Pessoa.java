@@ -6,11 +6,7 @@ public class Pessoa {
     public Pessoa(){}
 
     public Pessoa(String nome) {
-        if (nome.length()>=2 && nome.length()<=100){
-            this.nome = nome.toUpperCase();
-        }else{
-            throw new IllegalArgumentException();
-        }
+        this.nome = validaNome(nome);
     }
 
     public String getNome() {
@@ -21,8 +17,12 @@ public class Pessoa {
     }
 
     public void setNome(String nome) {
+        this.nome = validaNome(nome);
+    }
+
+    private String validaNome(String nome){
         if (nome.length()>=2 && nome.length()<=100){
-            this.nome = nome.toUpperCase();
+            return nome.toUpperCase();
         }else{
             throw new IllegalArgumentException();
         }
