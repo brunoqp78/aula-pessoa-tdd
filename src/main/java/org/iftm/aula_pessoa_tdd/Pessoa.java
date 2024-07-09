@@ -29,8 +29,12 @@ public class Pessoa {
     }
 
     public void setSalario(double salario) {
+        this.salario = validaSalario(salario);
+    }
+
+    public double validaSalario(double salario){
         if (salario >= 1100 && salario <=1000000)
-            this.salario = salario;
+           return salario;
         else{
             throw new IllegalArgumentException("Salário inválido");
         }
