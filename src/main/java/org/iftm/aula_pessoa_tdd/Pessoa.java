@@ -40,6 +40,11 @@ public class Pessoa {
         }
     }
 
+    public void reajustarSalario(double porcentagem) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'reajustarSalario'");
+    }
+
     
 
     

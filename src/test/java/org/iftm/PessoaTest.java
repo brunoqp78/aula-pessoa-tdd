@@ -1,5 +1,6 @@
 package org.iftm;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -241,5 +242,72 @@ public class PessoaTest {
                 });
     }
 
+    @Test
+    @DisplayName("Caso de teste que verifica se o reajuste é valido, com o valor limite inferior 1.")
+    public void testarReajusteSalarioValidoNoLimiteInferior() {
+        // Arrange
+        double entradaValida = 1.00;
+        double salarioInicial = 2000.00;
+        double resultadoEsperado = 2020.00;
+
+        // act
+        pessoa.setSalario(salarioInicial);
+        pessoa.reajustarSalario(entradaValida);
+        double resultadoObtido = pessoa.getSalario();
+
+        // assign
+        assertEquals(resultadoEsperado, resultadoObtido);
+    }
+
+    @Test
+    @DisplayName("Caso de teste que verifica se o reajuste é valido, com o valor limite inferior 100.")
+    public void testarReajusteSalarioValidoNoLimiteSuperior() {
+        // Arrange
+        double entradaValida = 100.00;
+        double salarioInicial = 2000.00;
+        double resultadoEsperado = 4000.00;
+
+        // act
+        pessoa.setSalario(salarioInicial);
+        pessoa.reajustarSalario(entradaValida);
+        double resultadoObtido = pessoa.getSalario();
+
+        // assign
+        assertEquals(resultadoEsperado, resultadoObtido);
+    }
+
+    @Test    
+    @DisplayName("Caso de teste que verifica o salário inválido e que tenha o valor abaixo do limite inferior, ou seja, <1000.")
+    public void testarReajusteInvalidoSalarioAbaixoLimiteInferior() {
+        // Arrange
+        double entradaInvalida = 0;
+        double salarioInicial = 2000.00;
+
+        //act and assign
+        assertDoesNotThrow(() -> {
+            pessoa.setSalario(salarioInicial);
+        });
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    pessoa.reajustarSalario(entradaInvalida);
+                });
+    }
+
+    @Test    
+    @DisplayName("Caso de teste que verifica o salário inválido e que tenha o valor abaixo do limite inferior, ou seja, <1000.")
+    public void testarReajusteInvalidoSalarioAcimaLimiteSuperior() {
+        // Arrange
+        double entradaInvalida = 101;
+        double salarioInicial = 2000.00;
+
+        //act and assign
+        assertDoesNotThrow(() -> {
+            pessoa.setSalario(salarioInicial);
+        });
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    pessoa.reajustarSalario(entradaInvalida);
+                });
+    }
 
 }
