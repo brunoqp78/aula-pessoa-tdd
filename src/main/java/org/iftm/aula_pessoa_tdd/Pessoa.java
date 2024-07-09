@@ -42,17 +42,20 @@ public class Pessoa {
 
     public void reajustarSalario(double porcentagem) {
         if (porcentagem >= 1 && porcentagem <= 100){
-            double aumento = salario * porcentagem/100;
-            if (salario+aumento > 1000000){
-                throw new IllegalArgumentException("Reajuste ultrapassa limite de salário de 1000000");
-            }else{
-                salario += aumento;
-            }
+            salario += validaReajuste(porcentagem);
         }else{
             throw new IllegalArgumentException("Porcentagem inválida!!!");
         }
     }
 
+    public double validaReajuste(double porcentagem){
+            double aumento = salario * porcentagem/100;
+            if (salario+aumento > 1000000){
+                throw new IllegalArgumentException("Reajuste ultrapassa limite de salário de 1000000");
+            }else{
+                return aumento;
+            }
+    }
     
 
     
