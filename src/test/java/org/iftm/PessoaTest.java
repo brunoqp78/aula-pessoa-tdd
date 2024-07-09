@@ -310,4 +310,23 @@ public class PessoaTest {
                 });
     }
 
+    @Test    
+    @DisplayName("Caso de teste que verifica o salário inválido após vários reajustes.")
+    public void testarReajusteInvalidoSalarioSuperandoLimiteSuperiorDoSalario() {
+        // Arrange
+        double entradaInvalida = 100;
+        double salarioInicial = 200000.00;
+
+        //act and assign
+        assertDoesNotThrow(() -> {
+            pessoa.setSalario(salarioInicial);
+            pessoa.reajustarSalario(entradaInvalida);
+            pessoa.reajustarSalario(entradaInvalida);
+        });                
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    pessoa.reajustarSalario(entradaInvalida);
+                });
+    }
+
 }
