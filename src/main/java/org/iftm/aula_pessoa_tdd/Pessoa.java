@@ -42,7 +42,7 @@ public class Pessoa {
 
     public void reajustarSalario(double porcentagem) {
         if (porcentagem >= 1 && porcentagem <= 100){
-            salario = salario + (salario * porcentagem/100);
+            salario += salario * porcentagem/100;
         }else{
             throw new IllegalArgumentException("Porcentagem inválida!!!");
         }
