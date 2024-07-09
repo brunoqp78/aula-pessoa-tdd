@@ -29,8 +29,11 @@ public class Pessoa {
     }
 
     public void setSalario(double salario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setSalario'");
+        if (salario >= 1100 && salario <=1000000)
+            this.salario = salario;
+        else{
+            throw new IllegalArgumentException("Salário inválido");
+        }
     }
 
     
