@@ -28,6 +28,11 @@ public class Pessoa {
         }
     }
 
+    public void setSalario(double salario) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setSalario'");
+    }
+
     
 
     

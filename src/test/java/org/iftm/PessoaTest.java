@@ -185,4 +185,61 @@ public class PessoaTest {
                 });
     }
 
+    @Test
+    @DisplayName("Caso de teste que verifica o salário válido e que tenha o valor do limite inferior, ou seja, 1100.")
+    public void testarModificarSalarioNoLimiteInferior() {
+        // Arrange
+        double entradaValida = 1100.00;
+        double resultadoEsperado = 1100.00;
+
+        // act
+        pessoa.setSalario(entradaValida);
+        double resultadoObtido = pessoa.getSalario();
+
+        // assign
+        assertEquals(resultadoEsperado, resultadoObtido);
+    }
+
+    @Test
+    @DisplayName("Caso de teste que verifica o salário válido e que tenha o valor do limite inferior, ou seja, 1000000.")
+    public void testarModificarSalarioNoLimiteSuperior() {
+        // Arrange
+        double entradaValida = 1000000.00;
+        double resultadoEsperado = 1000000.00;
+
+        // act
+        pessoa.setSalario(entradaValida);
+        double resultadoObtido = pessoa.getSalario();
+
+        // assign
+        assertEquals(resultadoEsperado, resultadoObtido);
+    }
+
+    @Test    
+    @DisplayName("Caso de teste que verifica o salário inválido e que tenha o valor acima do limite superior, ou seja, >1000000.")
+    public void testarModificarSalarioiNValidoAcimaLimiteSuperior() {
+        // Arrange
+        double entradaInvalida = 1000001.00;
+
+        //act and assign
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    pessoa.setSalario(entradaInvalida);
+                });
+    }
+
+    @Test    
+    @DisplayName("Caso de teste que verifica o salário inválido e que tenha o valor abaixo do limite inferior, ou seja, <1000.")
+    public void testarModificarSalarioiNValidoAbaixoLimiteSuperior() {
+        // Arrange
+        double entradaInvalida = 1099.00;
+
+        //act and assign
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    pessoa.setSalario(entradaInvalida);
+                });
+    }
+
+
 }
